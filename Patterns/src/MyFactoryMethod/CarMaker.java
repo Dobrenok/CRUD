@@ -5,4 +5,5 @@ package MyFactoryMethod;
  */
 public interface CarMaker {
     Car createCar(String name, String body, String engine);
+    int open = 7;
 }
