@@ -6,7 +6,10 @@
     <session-factory>
         <property name="connection.url">jdbc:sqlite:C:\Users\Владислав\Desktop\Test.sqlite</property>
         <property name="connection.driver_class">org.sqlite.JDBC</property>
-        <property name="connection.pool_size">3</property> <!--Количество соединений к БД -->
+       <!-- <property name="dialect">SQLiteDialect</property> -->
+        <property name="hibernate.dialect">com.SQLiteDialect</property>
+        <property name="connection.pool_size">1</property> <!--Количество соединений к БД -->
+        <property name="current_session_context_class">thread</property>
         <mapping class="com.UserEntity"/>
         <mapping resource="com/UserEntity.hbm.xml"/>
         <!-- DB schema will be updated if needed -->
