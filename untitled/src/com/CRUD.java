@@ -9,12 +9,12 @@ public class CRUD {
 
    private Session session;
 
-    private void createUser(int id,String name,int age,int isAdmin)  {
+    public void createUser(String name, int age, int isAdmin)  {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         Calendar calendar = Calendar.getInstance();
         UserEntity user = new UserEntity();
-        user.setId(id);
+       // user.setId(id);
         user.setName(name);
         user.setAge(age);
         user.setIsAdmin(isAdmin);

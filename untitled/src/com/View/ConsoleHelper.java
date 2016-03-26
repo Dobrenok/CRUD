@@ -1,7 +1,6 @@
 package com.View;
 
 import com.CRUD;
-import javafx.scene.layout.BackgroundImage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -40,26 +39,34 @@ public class ConsoleHelper implements ConsoleInterface
     {
         CRUD crud = new CRUD();
 
-        if(index == 1) crud.createUser();
-        else if(index == 2) findAndReadUser();
-        else if (index == 3) updateUser();
-        else if (index == 4) deleteUser();
-        else throw new IllegalArgumentException();
+        if(index == 1) {
+            String name = enterName();
+            System.out.println(name);
+            int age = enterAge();
+            System.out.println(age);
+            int isAdmin = enterIsAdmin();
+            crud.createUser(name,age,isAdmin);}
+      //  else if(index == 2) findAndReadUser();
+      //  else if (index == 3) updateUser();
+       // else if (index == 4) deleteUser();
+       // else throw new IllegalArgumentException();
     }
 
 
-    private String enterName(){
+    private String enterName()
+    {
         String Name;
         System.out.println("Enter Name:");
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
-        Name = scanner.toString();
+        Scanner scanner = new Scanner(System.in);
+        Name = scanner.nextLine();
         return Name;
     }
 
-    private int enterAge(){
+    private int enterAge()
+    {
         int age;
         System.out.println("Enter Age:");
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
+        Scanner scanner = new Scanner(System.in);
         age = scanner.nextInt();
         return age;
     }
@@ -67,7 +74,7 @@ public class ConsoleHelper implements ConsoleInterface
     private int enterIsAdmin(){
         int isAdmin;
         System.out.println("Enter idAdmin(1-true/0-false):");
-        Scanner scanner = new Scanner(new InputStreamReader(System.in));
+        Scanner scanner = new Scanner(System.in);
         while(true)
         {
             try
