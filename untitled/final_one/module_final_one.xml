@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_final_one" default="compile.module.final_one">
+  <dirname property="module.final_one.basedir" file="${ant.file.module_final_one}"/>
+  
+  <property name="module.jdk.home.final_one" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.final_one" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.final_one" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.final_one" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="final_one.output.dir" value="${module.final_one.basedir}/out/production/final_one"/>
+  <property name="final_one.testoutput.dir" value="${module.final_one.basedir}/out/test/final_one"/>
+  
+  <path id="final_one.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="final_one.module.production.classpath">
+    <path refid="${module.jdk.classpath.final_one}"/>
+    <path refid="library.sqlite-jdbc-3.7.2.classpath"/>
+    <path refid="library.hibernate_4.2.2-4.2.2.classpath"/>
+    <path refid="library.sqlite-jdbc-3.8.9.classpath"/>
+  </path>
+  
+  <path id="final_one.runtime.production.module.classpath">
+    <pathelement location="${final_one.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.7.2.classpath"/>
+    <path refid="library.hibernate_4.2.2-4.2.2.classpath"/>
+    <path refid="library.sqlite-jdbc-3.8.9.classpath"/>
+  </path>
+  
+  <path id="final_one.module.classpath">
+    <path refid="${module.jdk.classpath.final_one}"/>
+    <pathelement location="${final_one.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.7.2.classpath"/>
+    <path refid="library.hibernate_4.2.2-4.2.2.classpath"/>
+    <path refid="library.sqlite-jdbc-3.8.9.classpath"/>
+  </path>
+  
+  <path id="final_one.runtime.module.classpath">
+    <pathelement location="${final_one.testoutput.dir}"/>
+    <pathelement location="${final_one.output.dir}"/>
+    <path refid="library.sqlite-jdbc-3.7.2.classpath"/>
+    <path refid="library.hibernate_4.2.2-4.2.2.classpath"/>
+    <path refid="library.sqlite-jdbc-3.8.9.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.final_one">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.final_one">
+    <patternset refid="excluded.from.module.final_one"/>
+  </patternset>
+  
+  
+  <target name="compile.module.final_one" depends="compile.module.final_one.production,compile.module.final_one.tests" description="Compile module final_one"/>
+  
+  <target name="compile.module.final_one.production" depends="register.custom.compilers" description="Compile module final_one; production classes"/>
+  
+  <target name="compile.module.final_one.tests" depends="register.custom.compilers,compile.module.final_one.production" description="compile module final_one; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.final_one" description="cleanup module">
+    <delete dir="${final_one.output.dir}"/>
+    <delete dir="${final_one.testoutput.dir}"/>
+  </target>
+</project>
